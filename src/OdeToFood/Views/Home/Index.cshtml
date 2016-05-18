@@ -5,21 +5,9 @@
 }
 
 <h1>Welcome!</h1>
-<table>
-    @foreach (var res in Model.Restaurants)
-    {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@res.Id">Details</a>
-            </td>
-            <td>@res.Name</td>
-        </tr>
-    }
-
-</table>
-
-<a asp-action="Create">Create</a>
-
-@section footer {
-    <div>@Model.CurrentGreeting</div>
+@foreach (var res in Model.Restaurants)
+{
+    @Html.Partial("_Summary", res)
 }
+
+<div><a asp-action="Create">Create</a></div>
