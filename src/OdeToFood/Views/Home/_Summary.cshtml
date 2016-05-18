@@ -3,10 +3,15 @@
     <div class="panel-heading">@Model.Name</div>
     <div class="panel-body">
         Cuisine: @Model.Cuisine
-        <div>
-            <a class="btn btn-default" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-            <a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        </div>
+        @if (User.IsSignedIn())
+        {
+            <div>
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            </div>
+        }
+        
     </div>
     
 </section>

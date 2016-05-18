@@ -10,6 +10,7 @@ namespace OdeToFood.Services
         Restaurant Get(int id);
         void Add(Restaurant rest);
         int Commit();
+        void Delete(Restaurant rest);
     }
 
     public class SqlRestaurantData : IRestaurantData
@@ -29,6 +30,11 @@ namespace OdeToFood.Services
         public int Commit()
         {
             return _context.SaveChanges();
+        }
+
+        public void Delete(Restaurant rest)
+        {
+            _context.Remove(rest);
         }
 
         public Restaurant Get(int id)
@@ -74,6 +80,12 @@ namespace OdeToFood.Services
         public int Commit()
         {
             return 0;
+        }
+
+        public void Delete(Restaurant rest)
+        {
+            _restaurants.Remove(rest);
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model OdeToFood.ViewModels.HomePageViewModel
+﻿@model HomePageViewModel
 
 @{ 
     ViewBag.Title = "Home";  
@@ -9,5 +9,8 @@
 {
     @Html.Partial("_Summary", res)
 }
+@if (User.IsSignedIn())
+{
+    <div><a asp-action="Create">Create</a></div>
+}
 
-<div><a asp-action="Create">Create</a></div>

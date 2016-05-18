@@ -80,5 +80,18 @@ namespace OdeToFood.Contollers
             }
             return View(rest);
         }
+
+        public IActionResult Delete(int id) {
+
+            var rest = _restaurantData.Get(id);
+
+            if (ModelState.IsValid && rest != null)
+            {
+                _restaurantData.Delete(rest);
+                _restaurantData.Commit();
+                return RedirectToAction("Index");
+            }
+            return View(rest);
+        }
     }
 }
